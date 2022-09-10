@@ -1,15 +1,19 @@
-import { throttle } from "lodash";
+import { remove, throttle } from "lodash";
 
 const buttonStart = document.querySelector('button[data-start]');
 console.log(buttonStart);
 const buttonStop = document.querySelector('button[data-stop]');
 console.log(buttonStop);
 
+let timerId = 0;
 
 buttonStart.addEventListener('click', () => {
   buttonStart.disabled = true;
-    buttonStop.disabled = false;
-    document.body.style.backgroundColor = getRandomHexColor();
+    buttonStop.disabled = false; 
+    timerId = setInterval(() => {
+      document.body.style.backgroundColor = getRandomHexColor();
+    },1000);
+
 
 });
 
@@ -24,6 +28,7 @@ function getRandomHexColor() {
 buttonStop.addEventListener('click', () => {
     buttonStop.disabled = true;
     buttonStart.disabled = false;
+    clearInterval(timerId);
 });
 
 
