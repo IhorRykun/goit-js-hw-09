@@ -5,7 +5,7 @@ console.log(buttonStart);
 const buttonStop = document.querySelector('button[data-stop]');
 console.log(buttonStop);
 
-let timerId = 0;
+let timerId = null;
 //  !   Функція  старту
 buttonStart.addEventListener('click', () => {
   buttonStart.disabled = true;
