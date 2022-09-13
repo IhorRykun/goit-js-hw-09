@@ -2,19 +2,26 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-const timer = {
-  start() {
-    const startTime = Date.now();
+const buttonStart = document.querySelector('[data-start]');
+const inputDalay = document.querySelector('#datetime-picker');
+const days = document.querySelector('[data-days]');
+const hours = document.querySelector('data-hours');
+const minutes = document.querySelector('data-minutes');
+const seconds = document.querySelector('data-seconds');
 
-    setInterval(() => {
-      const currentTime = Date.now();
-      const deltaTime = currentTime - startTime;
-      const timeComponents = convertMs(deltaTime);
-      console.log(timeComponents);
-    }, 1000);
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    console.log(selectedDates[0]);
   },
 };
-timer.start();
+
+
+flatpickr(inputDalay, options);
+
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -34,3 +41,21 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+
+
+
+// const timer = {
+//   start() {
+//     const startTime = Date.now();
+
+//     setInterval(() => {
+//       const currentTime = Date.now();
+//       const deltaTime = currentTime - startTime;
+//       const timeComponents = convertMs(deltaTime);
+//       console.log(timeComponents);
+//     }, 1000);
+//   },
+// };
+// timer.start();
+
+
