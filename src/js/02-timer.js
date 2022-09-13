@@ -1,23 +1,20 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-// import Notiflix from 'notiflix';
+import Notiflix from 'notiflix';
 
 const timer = {
-    start() {
-        const startTime = Date.now();
+  start() {
+    const startTime = Date.now();
 
-        setInterval(() => {
-            const currentTime = Date.now();
-            const deltaTime = currentTime - startTime;
-const timeComponents = convertMs(deltaTime);
-            console.log(timeComponents);
-        }, 1000);
-    }
+    setInterval(() => {
+      const currentTime = Date.now();
+      const deltaTime = currentTime - startTime;
+      const timeComponents = convertMs(deltaTime);
+      console.log(timeComponents);
+    }, 1000);
+  },
 };
 timer.start();
-
-
-
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
