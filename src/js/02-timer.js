@@ -25,6 +25,8 @@ const minutes = document.querySelector('[data-minutes]');
 
 const seconds = document.querySelector('[data-seconds]');
 
+let selectDate = null;
+
 
 //  !   Бібліотека  flatpickr
 
@@ -33,8 +35,8 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    let deltaTime = selectedDates[0].getTime() - currentDate;
+  onClose(selectDate) {
+    let deltaTime = selectDate[0].getTime() - currentDate;
 
     if (deltaTime <= 0) {
       Notiflix.Notify.warning('Please choose a date in the future');
@@ -49,7 +51,7 @@ const options = {
         const timer = setInterval(() => {
           const newTime = Date.now();
           this.isActive = true;
-          const newDelta = selectedDates[0].getTime() - newTime;
+          const newDelta = selectDate[0].getTime() - newTime;
           const newTimeComp = convertMs(newDelta);
           seconds.textContent = addLeadingZero(newTimeComp.seconds);
           minutes.textContent = addLeadingZero(newTimeComp.minutes);
